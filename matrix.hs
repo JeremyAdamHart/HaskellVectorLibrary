@@ -75,6 +75,8 @@ instance Scalable (Matrix Float) where
 norm::(Matrix Float)->Float
 norm (Mat m) = sqrt (foldr (\u v-> (foldr (\x y-> x*x+y) 0 u) + v) 0 m)
 
+dot::(Matrix Float)->(Matrix Float)->Float
+dot (Mat a) (Mat b) = foldr (\x y-> x + y) 
 
 colMult::[[Float]]->[Float]->[[Float]]->[[Float]]
 colMult m c t = (foldl1 (.+.) (bimap (.*) m c)):t
